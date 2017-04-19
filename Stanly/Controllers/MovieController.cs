@@ -31,5 +31,10 @@ namespace Stanly.Controllers
 
             return Content(String.Format("pageNumber={0}, SortBy={1}", pageNumber, sortBy));
         }
+
+        public ActionResult ByReleaseDate(int year, int month)
+        {
+            return Content(String.Format("Year={0}, Month={1}", year, month));
+        }
     }
 }
