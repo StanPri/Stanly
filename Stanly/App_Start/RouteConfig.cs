@@ -12,13 +12,8 @@ namespace Stanly
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute(
-                "MoviesByReleaseDate",
-                "movie/released/{year}/{month}",
-                new {controller = "Movie", action = "ByReleaseDate"},
-                new {year = @"\d{4}", month= @"\d{2}"}
-            );
+            
+            routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
                 name: "Default",

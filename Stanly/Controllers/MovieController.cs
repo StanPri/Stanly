@@ -32,6 +32,7 @@ namespace Stanly.Controllers
             return Content(String.Format("pageNumber={0}, SortBy={1}", pageNumber, sortBy));
         }
 
+        [Route("movie/released/{year:regex(\\d{2}):range(1900,2017)}/{month:regex(\\d{2}):range(1,31)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(String.Format("Year={0}, Month={1}", year, month));
