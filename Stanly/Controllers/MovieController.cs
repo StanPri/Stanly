@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
 using Stanly.Models;
+using Stanly.ViewModel;
 
 namespace Stanly.Controllers
 {
@@ -14,7 +15,22 @@ namespace Stanly.Controllers
         public ActionResult RandomMovie()
         {
             var movie = new Movie(){ Name = "Hulk" };
-            return RedirectToAction("RandomBook", "Book");
+
+            var customers = new List<Customer>
+            {
+                new Customer() {Name = "Bill"},
+                new Customer() {Name = "Joe"},
+                new Customer() {Name = "Phil"}
+            };
+
+            var MovieCustomerModelView = new MovieCustomerViewModel()
+            {
+                Movie = movie,
+                Customers = customers
+                
+            };
+
+            return View(MovieCustomerModelView);
         }
 
         public ActionResult SearchMovie(int? pageNumber, string sortBy)
