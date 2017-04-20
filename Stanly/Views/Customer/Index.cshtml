@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Stanly.Models.Customer>
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Customers </h2>
+
+
+
+@if (!Model.Any())
+{
+    <p>No customers recorded</p>
+}
+else
+{
+    <table class=“table table-­bordered table­‐hover”>
+        <thead>
+            <tr>
+                <th>Customer</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(customer.Name, "Details", "Customer", new
+                   {
+                       id = customer.Id,
+                       name = customer.Name
+                   }, null)</td>
+                </tr>
+            }
+
+        </tbody>
+
+
+
+    </table>
+}

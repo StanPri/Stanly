@@ -1,27 +1,23 @@
-﻿@using Stanly.Models
-@model Stanly.ViewModel.MovieCustomerViewModel
+﻿@model IEnumerable<Stanly.Models.Movie>
+
 @{
-    ViewBag.Title = "RandomMovie";
+    ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Movie.Name</h2>
-
-@if (Model.Customers.Count == 0)
-{
-    <p>No customers recorded</p>
-}
-else
-{
-    <ul>
-
-        @foreach (var customer in Model.Customers)
+<h2>Movies</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Movie</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
         {
-            <li>@customer.Name</li>
+            <tr>
+                <td>@movie.Name</td>
+            </tr>
         }
-
-    </ul>
-}
-
-
-
+    </tbody>
+</table>

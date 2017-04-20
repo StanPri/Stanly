@@ -12,25 +12,23 @@ namespace Stanly.Controllers
     public class MovieController : Controller
     {
         // GET: Movie
-        public ActionResult RandomMovie()
+        public ViewResult RandomMovie()
         {
-            var movie = new Movie(){ Name = "Hulk" };
+            var movie = getMovies();
+            
 
-            var customers = new List<Customer>
+            return View(movie);
+        }
+
+        private IEnumerable<Movie> getMovies()
+        {
+            return new List<Movie>
             {
-                new Customer() {Name = "Bill"},
-                new Customer() {Name = "Joe"},
-                new Customer() {Name = "Phil"}
-            };
+                new Movie() {Name="Hulk", Id = 1},
+                new Movie() {Name = "Gone with the Wind", Id = 2},
+                new Movie() {Name = "Titanic", Id = 3}
 
-            var MovieCustomerModelView = new MovieCustomerViewModel()
-            {
-                Movie = movie,
-                Customers = customers
-                
             };
-
-            return View(MovieCustomerModelView);
         }
 
         public ActionResult SearchMovie(int? pageNumber, string sortBy)
